@@ -1,0 +1,22 @@
+{% extends "layout.html "%}
+{% block title %} Home {% endblock title %}
+{% block body %}
+
+<div class="container my-3">
+    <h3 class="center grey lighten-1 offset-50 ">QR Code GENERATOR</h3>
+    <form action="/add_new" method="POST" class="input">
+            <label for="desc">QR Code</label>
+            <input type="text" name="code" placeholder="Enter link, name or website to generate QR code" id="desc">
+        <input type="submit" value="Generate" class="btn blue center ">
+    </form>
+</div>
+<div class="container my-3">
+    {% if data|length !=0 %}
+    <h4 class=" center grey lighten-1">Your Code</h4>
+    {{data}}
+    <img src="{{data}}" alt="">
+                {% endif %}
+                <a href="/update/{{data.id}}" type="button" class="btn blue btn-outline-dark" ><i class="materials dark-text">edit</i> Edit</a>
+</div>
+
+{% endblock %}
